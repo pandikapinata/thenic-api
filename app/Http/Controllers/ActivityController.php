@@ -29,7 +29,7 @@ class ActivityController extends Controller
 
     public function store(Request $request)  {
 
-        $url = 'http://192.168.43.74:8000/images/';
+        // $url = 'http://192.168.43.74:8000/images/';
         $this->validate($request, [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -38,7 +38,7 @@ class ActivityController extends Controller
         
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name = $url.str_slug($request->input('name')).'.'.$image->getClientOriginalExtension();
+            $name = str_slug($request->input('name')).'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images');
             // $imagePath = $destinationPath. "/".  $name;
             $image->move($destinationPath, $name);
