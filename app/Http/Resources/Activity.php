@@ -17,7 +17,7 @@ class Activity extends JsonResource
          return [
             'id' => $this->id,
             'activityName' => $this->name,
-            'activityIcon' => $this->task_icon,
+            'activityIcon' => "https://thenic-api.herokuapp.com/images/".$this->task_icon,
         ];
     }
 }

@@ -29,7 +29,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'photo_profile' => "http://192.168.43.74:8000/images/avatar.png"
+            'photo_profile' => "avatar.png"
         ]);
         $user->save();
         return response()->json([
@@ -93,18 +93,18 @@ class AuthController extends Controller
         return response()->json([
             'idUser' => $request->user()->id,
             'name' => $request->user()->name,
-            'email' => $request->user()->email ,
-            'fcm_token' => $request->user()->fcm_token ,
-            'weight' => $request->user()->weight ,
-            'height' => $request->user()->height ,
-            'photo_profile' => $request->user()->photo_profile ,
+            'email' => $request->user()->email,
+            'fcm_token' => $request->user()->fcm_token,
+            'weight' => $request->user()->weight,
+            'height' => $request->user()->height,
+            'photo_profile' => "https://thenic-api.herokuapp.com/images/".$request->user()->photo_profile,
 
         ]);
     }
 
     public function updateUser(Request $request)
     {
-        $url = 'http://192.168.43.74:8000/images/';
+        // $url = 'http://192.168.43.74:8000/images/';
         $this->validate($request, [
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -121,22 +121,18 @@ class AuthController extends Controller
             File::delete($oldFilename);
             $image = $request->file('image');
             $namePath = str_slug($request->input('name')).time().'.'.$image->getClientOriginalExtension();
-            $name = $url.str_slug($request->input('name')).time().'.'.$image->getClientOriginalExtension();
+            $name = str_slug($request->input('name')).time().'.'.$image->getClientOriginalExtension();
             $path = base_path('/public/images/' . $namePath);
             // dd($path);
-
             // This will generate an image with transparent background
             // If you need to have a background you can pass a third parameter (e.g: '#000000')
             $canvas = Image::canvas(500, 500);
-
             $imageUser  = Image::make($image->getRealPath())->resize(500, 500, function($constraint)
             {
                 $constraint->aspectRatio();
             });
-
             $canvas->insert($imageUser, 'center');
             $canvas->save($path);
-            // Image::make($image->getRealPath())->resize(500, 500)->save($path);
 
             $user->photo_profile = $name;
         }

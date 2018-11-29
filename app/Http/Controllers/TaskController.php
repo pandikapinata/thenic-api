@@ -85,17 +85,6 @@ class TaskController extends Controller
         $task->note = $request->input('note');
         $task->sets = $request->input('sets');
         $task->repetition = $request->input('reps');
-        // if($task->activity_id == 1){
-        //     $task->task_icon = 'http://192.168.43.74:8000/images/pull-up.png';
-        // }elseif ($task->activity_id == 2) {
-        //     $task->task_icon = 'http://192.168.43.74:8000/images/pull-up.png';
-        // }elseif ($task->activity_id == 3) {
-        //     $task->task_icon = 'http://192.168.43.74:8000/images/bars.png';
-        // }elseif ($task->activity_id == 4) {
-        //     $task->task_icon = 'http://192.168.43.74:8000/images/push-up.png';
-        // }elseif ($task->activity_id == 5) {
-        //     $task->task_icon = 'http://192.168.43.74:8000/images/rings.png';
-        // }
         
         $task->volume = $volumeTask;
         $task->date_task = $request->input('date_task');
