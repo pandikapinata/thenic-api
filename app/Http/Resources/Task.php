@@ -24,7 +24,7 @@ class Task extends JsonResource
             'taskReps' => $this->repetition,
             'taskVolume' => $this->volume,
             'taskDate' => $this->date_task,
-            'taskIcon' => $this->activity->task_icon
+            'taskIcon' => "https://thenic-api.herokuapp.com/api/".$this->activity->task_icon
         ];
     }
 }
