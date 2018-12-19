@@ -22,6 +22,7 @@ class CreateTasksTable extends Migration
             $table->integer('repetition');
             $table->integer('volume');
             $table->dateTime('date_task');
+            $table->boolean('status_active')->default(true);
             $table->timestamps();
         });
     }

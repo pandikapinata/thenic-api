@@ -97,7 +97,7 @@ class AuthController extends Controller
             'fcm_token' => $request->user()->fcm_token,
             'weight' => $request->user()->weight,
             'height' => $request->user()->height,
-            'photo_profile' => "https://thenic-api.herokuapp.com/images/".$request->user()->photo_profile,
+            'photo_profile' => "http://192.168.43.74:8000/images/".$request->user()->photo_profile,
 
         ]);
     }

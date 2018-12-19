@@ -29,18 +29,21 @@ Route::group([
         Route::get('tasks','TaskController@index');
         Route::get('tasksLatest/{date}','TaskController@indexLatest');
         Route::get('tasksDay','TaskController@tasksDay');
+        Route::get('load-tasks','TaskController@loadDataAfterLogin');
         //get Total Volume per Day
         Route::get('totalVolume','TaskController@totalVolumeperDay');
         // get specific task
         Route::get('task/{id}','TaskController@show');
         // create new task
         Route::post('task','TaskController@store');
+        // sync task
+        Route::post('sync-task','TaskController@syncTask');
+        // softDeleteTask
+        Route::post('softDeleteTask','TaskController@softDeleteTask');
         // update existing task
-        Route::put('task','TaskController@store');
-        // delete a task
-        Route::delete('task/{id}','TaskController@destroy');
-
-
+        Route::post('taskUpdate','TaskController@updateTask');
+        // sync taskUpdateOff
+        Route::post('bulkUpdate','TaskController@bulkUpdate');
         // get list of activities
         Route::get('activities','ActivityController@index');
         // get specific activities

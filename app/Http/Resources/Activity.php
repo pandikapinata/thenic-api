@@ -15,9 +15,9 @@ class Activity extends JsonResource
     public function toArray($request)
     {
          return [
-            'id' => $this->id,
+            'activityId' => $this->id,
             'activityName' => $this->name,
-            'activityIcon' => "https://thenic-api.herokuapp.com/images/".$this->task_icon,
+            'activityIcon' => "http://192.168.43.74:8000/images/".$this->task_icon,
         ];
     }
 }

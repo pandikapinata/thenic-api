@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Task extends JsonResource
+class TaskSync extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,7 +24,7 @@ class Task extends JsonResource
             'taskVolume' => $this->volume,
             'taskDate' => $this->date_task,
             'taskIcon' => "http://192.168.43.74:8000/images/".$this->activity->task_icon,
-            'statusDelete' => $this->status_active
+            'id' => $request->idSQL
         ];
     }
 }
